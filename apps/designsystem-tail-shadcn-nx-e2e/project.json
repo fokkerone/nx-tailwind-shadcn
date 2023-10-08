@@ -1,0 +1,32 @@
+{
+  "name": "designsystem-tail-shadcn-nx-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/designsystem-tail-shadcn-nx-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/designsystem-tail-shadcn-nx-e2e/cypress.config.ts",
+        "devServerTarget": "designsystem-tail-shadcn-nx:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "designsystem-tail-shadcn-nx:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/designsystem-tail-shadcn-nx-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["designsystem-tail-shadcn-nx"]
+}
